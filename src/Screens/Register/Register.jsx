@@ -39,7 +39,7 @@ const Register = () => {
           console.log(values)
         }}
       >
-        {({values, handleChange, handleSubmit, errors, touched, handleBlur}) => (
+        {({values, handleChange, handleSubmit, errors, touched, handleBlur, isSubmitting,dirty, isValid}) => (
           <form className="space-y-5" action="#" method="POST" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900 sr-only">
