@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* https://tailwindcss.com/docs/installation follow this documentation for tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
