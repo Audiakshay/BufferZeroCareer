@@ -183,6 +183,7 @@ const Register = () => {
           Already a member?{" "}
           <Link
             to="/"
+            replace
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             login

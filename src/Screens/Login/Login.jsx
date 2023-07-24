@@ -1,4 +1,7 @@
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "@firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "@firebase/auth";
 import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -129,6 +132,7 @@ const Login = () => {
         Not a member?{" "}
         <Link
           to="register"
+          replace
           className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
         >
           Register here
