@@ -1,8 +1,17 @@
+import { signInWithEmailAndPassword } from "@firebase/auth";
 import { Form, Formik } from "formik";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
 
 const Login = () => {
+  const nav = useNavigate();
+  const signIn = (values) => {
+    const { email, password } = values;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => nav("/Home", { replace: true }))
+      .catch((error) => console.log(error));
+  };
   const validate = (values) => {
     const errors = {};
     if (!values.email) {
@@ -23,9 +32,7 @@ const Login = () => {
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={validate}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        onSubmit={(values) => signIn(values)}
       >
         {({
           values,
