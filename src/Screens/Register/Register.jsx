@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -97,6 +98,15 @@ const Register = () => {
               </button>
             </div>
           </form>
+          <p className="mt-4 text-center text-sm text-gray-500">
+             Already a member?{" "}
+            <Link
+              to="/"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              login
+            </Link>
+          </p>
         </div>
   );
 };
