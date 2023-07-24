@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
-import LoginReducers from './LOginReducers';
-
+import { combineReducers } from "redux";
+import LoginRegisterField from "./LoginReducer";
 
 const rootReducer = combineReducers({
-    login: LoginReducers,
+  userData: LoginRegisterField,
 });
 
 export default rootReducer;
