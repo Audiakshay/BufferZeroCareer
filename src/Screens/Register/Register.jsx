@@ -9,7 +9,7 @@ const Register = () => {
   const signUp = (values) => {
     const { email, password } = values;
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => nav("/", { replace: true }))
+      .then(() => nav("/", { replace: true }))
       .catch((error) => console.log(error));
   };
   return (
@@ -183,6 +183,7 @@ const Register = () => {
           Already a member?{" "}
           <Link
             to="/"
+            replace
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             login
