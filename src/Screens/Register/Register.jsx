@@ -36,6 +36,9 @@ const Register = () => {
             }
             if (!values.password) {
               errors.password = "Required";
+            } else if (!/^[a-zA-Z0-9!@#$%^&*]{6,16}$/i.test(values.password)) {
+              errors.password =
+                "password should contain atleast one number and one special character";
             }
             if (!values.confirmpassword) {
               errors.confirmpassword = "Required";
