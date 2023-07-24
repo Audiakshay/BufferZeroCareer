@@ -9,7 +9,7 @@ const Register = () => {
   const signUp = (values) => {
     const { email, password } = values;
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => nav("/", { replace: true }))
+      .then(() => nav("/", { replace: true }))
       .catch((error) => console.log(error));
   };
   return (
