@@ -1,16 +1,24 @@
-import { signInWithEmailAndPassword } from "@firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "@firebase/auth";
 import { Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 
 const Login = () => {
   const nav = useNavigate();
+  const [err, setErr] = useState("");
+  const forgotPassword = (email) => {
+    email !== "" ? sendPasswordResetEmail(auth, email) : alert("provide email");
+  };
+
   const signIn = (values) => {
     const { email, password } = values;
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => nav("/Home", { replace: true }))
-      .catch((error) => console.log(error));
+      .then(() => {
+        nav("/Home", { replace: true });
+        setErr("");
+      })
+      .catch((error) => setErr(error.message));
   };
   const validate = (values) => {
     const errors = {};
@@ -29,6 +37,7 @@ const Login = () => {
   };
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      {err && <p className="bg-red-400 py-3 mb-8 pl-16">{err}</p>}
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={validate}
@@ -78,12 +87,12 @@ const Login = () => {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
+                  <button
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
+                    onClick={() => forgotPassword(values.email)}
                   >
                     Forgot password?
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="mt-2">
