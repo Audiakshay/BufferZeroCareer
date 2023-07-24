@@ -1,8 +1,14 @@
-const loginDetail = (data) => {
+export const loginDetail = (data) => {
   return {
     type: "loginDetail",
     payload: data,
   };
 };
 
-export default loginDetail;
+export const registerDetail = (data) => {
+  return {
+    type: "registerDetail",
+    payload: data,
+  };
+};
+
