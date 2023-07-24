@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -6,7 +7,6 @@ const Register = () => {
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
-                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900 sr-only"
               >
                Name
@@ -97,6 +97,15 @@ const Register = () => {
               </button>
             </div>
           </form>
+          <p className="mt-4 text-center text-sm text-gray-500">
+             Already a member?{" "}
+            <Link
+              to="/"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              login
+            </Link>
+          </p>
         </div>
   );
 };
