@@ -5,16 +5,14 @@ import * as Yup from "yup";
 
 const SignupSchema = Yup.object().shape({
   fullname: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .min(4, "Too Short!")
+    .max(30, "Too Long!")
     .required("Required...!"),
   applicationfor: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required...!"),
   resume: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
     .required("Required...!"),
   about: Yup.string()
     .min(2, "Too Short!")
@@ -23,16 +21,18 @@ const SignupSchema = Yup.object().shape({
   ExperienceLevel: Yup.string()
     .required("Required...!"),
     contact:Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required...!"),
+    .matches(/[6-9]{1}[0-9 ]{4}[0-9 ]{5}/, {
+      message: "Invalid Indian number",
+      // excludeEmptyString: false,
+    })
+    .required('Required.......'),
   email: Yup.string().email("Invalid email").required("Required...!"),
 });
 
 const Home = () => {
   return (
-    <div className="h-auto w-full flex justify-center items-center">
-      <div className="px-20 py-10 border-2 rounded-md h-auto w-[60%] shadow-xl">
+    <div className="h-auto w-full flex justify-center items-center flex-wrap overflow-hidden">
+      <div className="px-20 py-10 m-5 border-2 rounded-md h-auto w-[60%] shadow-2xl">
         <div className="px-4 sm:px-0">
           <h3 className="text-base font-semibold leading-7 text-gray-900">
             Applicant Information
@@ -141,6 +141,7 @@ const Home = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.contact}
+                        maxLength={10}
                       />
                       <span className="text-red-500">
                         {errors.contact && touched.contact && errors.contact}
@@ -195,14 +196,14 @@ const Home = () => {
                             </div>
                           </div>
 
-                          <div className="ml-4 flex-shrink-0">
+                          {/* <div className="ml-4 flex-shrink-0">
                             <a
                               href="#"
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
                               Download
                             </a>
-                          </div>
+                          </div> */}
                         </li>
                       </ul>
                       <span className="text-red-500">
