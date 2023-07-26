@@ -49,8 +49,9 @@ const Home = () => {
           contact: "",
         }}
         validationSchema={SignupSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           console.log(values);
+          resetForm();
         }}
       >
         {({
@@ -61,7 +62,6 @@ const Home = () => {
           setFieldValue,
           handleBlur,
           handleSubmit,
-          isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
             <div className="mt-6 border-t border-gray-100">
